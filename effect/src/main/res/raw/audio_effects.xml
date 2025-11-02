@@ -1,0 +1,10 @@
+<effects>
+    <libraries>
+        <library name="opencar" path="libeffect_opencar.so"/>
+    </libraries>
+    <effects>
+        <effect name="opencar.eq_limiter"
+            library="opencar"
+            uuid="5e0a0a10-7f2a-4b3a-8b92-11aa22bb33cc"/>
+    </effects>
+</effects>
