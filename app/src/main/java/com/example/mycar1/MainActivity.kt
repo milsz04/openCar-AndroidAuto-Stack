@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         val mid = findViewById<SeekBar>(R.id.seekMid)
         val high = findViewById<SeekBar>(R.id.seekHigh)
 
-        fun sbToDb(sb: SeekBar) = (sb.progress - 120) / 10f  // -12..+12 dB
+        fun sbToDb(sb: SeekBar) = (sb.progress - 120) / 10f
 
         swEnable.setOnCheckedChangeListener { _, isChecked ->
             setParam(1, packInt(if (isChecked) 1 else 0))
