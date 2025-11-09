@@ -74,3 +74,5 @@ class MainActivity : AppCompatActivity() {
         player.release()
     }
 }
+
+private fun AudioEffect.setParameter(array: ByteArray, payload: ByteArray) {}
