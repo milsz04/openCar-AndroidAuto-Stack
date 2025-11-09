@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Simple player to own a session (replace with your own audio source if you want)
+        // basic type of player
         player = MediaPlayer.create(this, android.provider.Settings.System.DEFAULT_RINGTONE_URI).apply {
             isLooping = true
             setAudioAttributes(
@@ -38,8 +38,6 @@ class MainActivity : AppCompatActivity() {
             )
             start()
         }
-
-        // Attach effect to the MediaPlayer session
         effect = AudioEffect(EFFECT_UUID, AudioEffect.EFFECT_TYPE_NULL, 0, player.audioSessionId).apply {
             enabled = true
         }

@@ -10,7 +10,7 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "OpenCar", __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,"OpenCar", __VA_ARGS__)
 
-// --- Minimal effect interface types (shim) ---
+//Minimal effect interface types
 extern "C" {
 typedef int32_t (*effect_process_t)(void* self, float* in, float* out, uint32_t frames);
 typedef int32_t (*effect_command_t)(void* self, uint32_t cmdCode, uint32_t cmdSize, void* cmdData);
@@ -24,12 +24,12 @@ struct effect_handle_s {
 };
 }
 
-// Param IDs (you’ll use these from Kotlin)
+// params IDs
 enum : uint32_t { PARAM_ENABLE=1, PARAM_LOW=2, PARAM_MID=3, PARAM_HIGH=4, PARAM_LIMIT=5 };
 
 static int32_t proc(void* self, float* in, float* out, uint32_t frames){
     auto* h = reinterpret_cast<effect_handle_s*>(self);
-    // interleaved stereo float
+
     for(uint32_t i=0;i<frames;i++){
         float L = in[2*i+0];
         float R = in[2*i+1];
@@ -49,7 +49,7 @@ static int32_t cmd(void* self, uint32_t code, uint32_t size, void* data){
     return 0;
 }
 
-// --- Factory symbols exported for AudioFlinger to find ---
+
 extern "C" __attribute__((visibility("default")))
 int32_t create_effect(effect_handle_s** handle){
     auto* h = new effect_handle_s();
